@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.logging.Logger;
 
+import doomtest2.vector.Vec2;
+
 public class Test {
 
 	
@@ -271,9 +273,80 @@ public class Test {
 		public final int LeftChildID;
 		
 		
-		public final int
+		public final Vec2 divider;
+		
+		public Node(int XPartition, int YPartition, int ChangeXPartition, int ChangeYPartition, int RightBoxTop, int RightBoxBottom, int RightBoxLeft, int RightBoxRight,
+				int LeftBoxTop, int LeftBoxBottom, int LeftBoxLeft, int LeftBoxRight, int RightChildID, int LeftChildID) {
+			this.XPartition = XPartition;
+			this.YPartition = YPartition;
+			this.ChangeXPartition = ChangeXPartition;
+			this.ChangeYPartition = ChangeYPartition;
+			
+			this.RightBoxTop = RightBoxTop;
+			this.RightBoxBottom = RightBoxBottom;
+			this.RightBoxLeft = RightBoxLeft;
+			this.RightBoxRight = RightBoxRight;
+			
+			this.LeftBoxTop = LeftBoxTop;
+			this.LeftBoxBottom = LeftBoxBottom;
+			this.LeftBoxLeft = LeftBoxLeft;
+			this.LeftBoxRight = LeftBoxRight;
+			
+			this.RightChildID = RightChildID;
+			this.LeftChildID = LeftChildID;
+			
+			
+			divider = new Vec2((short) ChangeXPartition, (short) ChangeYPartition);
+			
+		}
+		
+		
+		private final Vec2 vec2Tmp = new Vec2();
+		
+		public int getChildSide(double playerX, double playerY) {
+			vec2Tmp.set(playerX - (short) XPartition,  playerY - (short) YPartition);
+			return (int) (divider.getSign(vec2Tmp) * 0.5 + 0.5);
+		}
+	}
+	
+	public static List<Node> nodes = new ArrayList<>();
+	
+	
+	public static void extractNodes(ByteBuffer bb, int lumpIndex) {
+		WADDirectory dir = directories.get(lumpIndex);
+		System.out.println("extracting nodes" +dir);
+		
+		int totalLength = 0;
+		bb.position((int) dir.offSet);
+		
+		while(totalLength < dir.length) {
+			
+			int XPartition = bb.getShort() & 0xffff;
+			int YPartition = bb.getShort() & 0xffff;
+			int ChangeXPartition = bb.getShort() & 0xffff;
+			int ChangeYPartition = bb.getShort() & 0xffff;
+			
+			int RightBoxTop = bb.getShort() & 0xffff;
+			int RightBoxBottom = bb.getShort() & 0xffff;
+			int RightBoxLeft = bb.getShort() & 0xffff;
+			int RightBoxRight = bb.getShort() & 0xffff;
+			
+			int LeftBoxTop = bb.getShort() & 0xffff;
+			int LeftBoxBottom = bb.getShort() & 0xffff;
+			int LeftBoxLeft = bb.getShort() & 0xffff;
+			int LeftBoxRight = bb.getShort() & 0xffff;
+			
+			int RightChildID = bb.getShort() & 0xffff;
+			int LeftChildID = bb.getShort() & 0xffff;
+			
+			Node node = new Node(XPartition, YPartition,  ChangeXPartition,  ChangeYPartition,  RightBoxTop,  RightBoxBottom,  RightBoxLeft,  RightBoxRight, 
+					 LeftBoxTop,  LeftBoxBottom,  LeftBoxLeft, LeftBoxRight,  RightChildID,  LeftChildID) ;
+			nodes.add(node);
+			totalLength += 14 * 2;	
+		}
 		
 	}
+	
 	
 	
 	public static class Thing{
