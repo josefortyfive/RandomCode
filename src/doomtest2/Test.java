@@ -379,9 +379,64 @@ public class Test {
 	public static void extractSectors(ByteBuffer bb, int lumpIndex) {
 		
 		WADDirectory dir = directories.get(lumpIndex);
+		System.out.println("extracting sectors " +dir);
+		
+		int totalLength = 0;
+		bb.position((int) dir.offSet);
+		
+		while(totalLength < dir.length) {
+			int floorHeight = bb.getShort() & 0xffff;
+			int ceilingHeight = bb.getShort() & 0xffff;
+			
+			byte[] floorTextureNameBytes = new byte[8];
+			bb.get(floorTextureNameBytes);
+			String floorTextureName = new String(floorTextureNameBytes);
+			
+			byte[] ceilingTextureNameBytes = new byte[8];
+			bb.get(ceilingTextureNameBytes);
+			String ceilingTextureName = new String(ceilingTextureNameBytes);
+			
+			int lightLevel = bb.getShort() & 0xffff;
+			int specialType = bb.getShort() & 0xffff;
+			int tagNumber = bb.getShort() & 0xffff;
+			
+			Sector sector = new Sector(floorHeight, ceilingHeight, floorTextureName, ceilingTextureName, lightLevel, specialType, tagNumber);
+			sectors.add(sector);
+			totalLength += 5 * 2 + 8 * 2;
+		}
 		
 		
 		
+	}
+	
+	
+	public static class Subsector{
+		
+		public final int segCount;
+		public final int firstSegNumber;
+		
+		public Subsector(int segCount, int firstSegNumber) {
+			this.segCount = segCount;
+			this.firstSegNumber = firstSegNumber;
+		}
+		
+	}
+
+	public static List<Subsector> subsectors = new ArrayList<>();
+	
+	public static void extractSubsectors(ByteBuffer bb, int lumpIndex) {
+        WADDirectory dir = directories.get(lumpIndex);
+        System.out.println("extracting subsectors " + dir);
+        //dir.data.position(0);
+        int totalLength = 0;
+        bb.position((int) dir.offSet);
+        while (totalLength < dir.length) {
+            int segCount = bb.getShort() & 0xffff;
+            int firstSegNumber = bb.getShort() & 0xffff;
+            Subsector subsector = new Subsector(segCount, firstSegNumber);
+            subsectors.add(subsector);
+            totalLength += 2 * 2;
+        } 
 	}
 	
 	public static class Thing{
@@ -404,7 +459,21 @@ public class Test {
 		public static List<Thing> things = new ArrayList<>();
 		
 		public static void extractThings(ByteBuffer bb, int lumpIndex) {
-
+	        WADDirectory dir = directories.get(lumpIndex);
+	        System.out.println("extracting things " + dir);
+	        //dir.data.position(0);
+	        int totalLength = 0;
+	        bb.position((int) dir.offSet);
+	        while (totalLength < dir.length) {
+	            int xPosition = bb.getShort() & 0xffff; // int16_t
+	            int yPosition = bb.getShort() & 0xffff; // int16_t
+	            int angle = bb.getShort() & 0xffff; // int16_t
+	            int type = bb.getShort() & 0xffff; // int16_t
+	            int flags = bb.getShort() & 0xffff; // int16_t
+	            Thing thing = new Thing(xPosition, yPosition, angle, type, flags);
+	            things.add(thing);
+	            totalLength += 5 * 2;
+	        } 
 			
 		}
 		
