@@ -347,7 +347,42 @@ public class Test {
 		
 	}
 	
+	public static class Sector {
+		
+		public final int floorHeight;
+		public final int ceilingHeight;
+		public final String floorTextureName;
+		public final String ceilingTextureName;
+		public final int lightLevel;
+		public final int specialType;
+		public final int tagNumber;
+		public final Color color;
+		
+		public Sector(int floorHeight, int ceilingHeight, String floorTextureName, String ceilingTextureName, int lightLevel, int specialType, int tagNumber) {
+			
+			this.floorHeight = floorHeight;
+			this.ceilingHeight = ceilingHeight;
+			this.floorTextureName = floorTextureName;
+			this.ceilingTextureName = ceilingTextureName;
+			this.lightLevel = lightLevel;
+			this.specialType = specialType;
+			this.tagNumber = tagNumber;
+			
+			int c = (int) (0x55 * Math.random());
+			color = new Color(c, c, c);
+			
+		}
+	}
 	
+	public static List<Sector> sectors = new ArrayList<>();
+	
+	public static void extractSectors(ByteBuffer bb, int lumpIndex) {
+		
+		WADDirectory dir = directories.get(lumpIndex);
+		
+		
+		
+	}
 	
 	public static class Thing{
 		
