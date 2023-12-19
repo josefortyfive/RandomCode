@@ -1,4 +1,6 @@
+package chessgame;
 
 public class Water {
-    public boolean true;
+	
+    public boolean isCollision = false;
 }
