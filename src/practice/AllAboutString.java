@@ -27,10 +27,10 @@ public class AllAboutString {
 		if(helloWorldLower.equalsIgnoreCase(helloWorldLower)) {
 			System.out.println("Values match ignoring case");
 		}
-		if(helloWorldLower.startsWith("Hello")){
+		if(helloWorld.startsWith("Hello")){
 			System.out.println("String starts with Hello");
 		}
-		if(helloWorldLower.endsWith("World")){
+		if(helloWorld.endsWith("World")){
 			System.out.println("String ends with World");
 		}
 		
