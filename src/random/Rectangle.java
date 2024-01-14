@@ -1,4 +1,5 @@
-package test;
+package random;
+
 
 public class Rectangle {
     
