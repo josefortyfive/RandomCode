@@ -14,8 +14,16 @@ public class PersonalComputer extends Product {
 		this.monitor = monitor;
 		this.motherboard = motherboard;
 	}
+	
+	private void drawLogo() {
+		monitor.drawPizelAt(1200, 50, "Yellow");
+	}
 
-
+	public void powerUp() {
+		computerCase.pressPowerButton();
+		drawLogo();
+	}
+	/*
 	public ComputerCase getComputerCase() {
 		return computerCase;
 	}
@@ -30,7 +38,7 @@ public class PersonalComputer extends Product {
 		return motherboard;
 	}
 	
-	
+	*/
 	
 	
 }

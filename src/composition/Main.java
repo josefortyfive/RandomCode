@@ -10,7 +10,12 @@ public class Main {
 		
 		PersonalComputer thePC = new PersonalComputer("2208", "Dell", theCase, theMonitor, theMotherboard);
 		
+		/*
 		thePC.getMonitor().drawPizelAt(10, 10, "RED");
+		thePC.getMotherboard().loadProgram("Windows OS");
+		thePC.getComputerCase().pressPowerButton();
+		*/
 		
+		thePC.powerUp();
 	}
 }
