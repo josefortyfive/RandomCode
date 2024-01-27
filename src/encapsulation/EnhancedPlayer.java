@@ -39,14 +39,7 @@ public class EnhancedPlayer {
 		if(healthPercentage > 100) {
 			System.out.println("Player's health restored to 100%");
 			healthPercentage = 100;
-		}
-		
+		}		
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }
