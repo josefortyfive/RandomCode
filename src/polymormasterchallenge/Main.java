@@ -3,6 +3,28 @@ package polymormasterchallenge;
 public class Main {
 
 	public static void main(String args[]) {
+
+		MealOrder deluxeMeal = new MealOrder("deluxe", "7-up", "chili");
+		deluxeMeal.addBurgerToppings("AVOCADO", "BACON", "LETTUCE", "CHEESE", "MAYO");
+		deluxeMeal.setDrinkSize("SMALL");
+		deluxeMeal.printItemizedList();
+		
+		
+		/*
+		MealOrder secondMeal = new MealOrder("turkey", "7-up", "chili");
+		secondMeal.addBurgerToppings("LETTUCE", "CHEESE", "MAYO");
+		secondMeal.setDrinkSize("SMALL");
+		secondMeal.printItemizedList();
+
+		MealOrder regularMeal = new MealOrder();
+		regularMeal.addBurgerToppings("BACON", "CHEESE", "MAYO");
+		regularMeal.setDrinkSize("LARGE");
+		regularMeal.printItemizedList();
+		
+
+		Burger burger = new Burger("regular", 4.00);
+		burger.addTopping("BACON", "CHEESE", "MAYO");
+		burger.printItem();
 		
 		Item coke = new Item("drink", "coke", 1.50);
 		coke.printItem();
@@ -11,5 +33,8 @@ public class Main {
 		
 		Item avocado = new Item("Topping ", "avocado", 1.50);
 		avocado.printItem();
+		*/
+		
+		
 	}
 }
