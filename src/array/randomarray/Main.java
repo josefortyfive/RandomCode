@@ -28,10 +28,10 @@ public class Main {
 
 	private static int[] getRandomArray(int len) {
 		
-		Random random = new Random();  // call to generate radom numbers
+		Random random = new Random();  // call to generate random numbers
 		int[] randomNum = new int[len]; // Will use this to pass the random Object in the for loop 
 		
-		// For loop is create to generate random nummber
+		// For loop is create to generate random number
 		
 		for(int i = 0; i < len; i++) {      // created for loop to get the len for the array
 			randomNum[i] = random.nextInt(100);  // generates random number using the len in the getRandomArray() function 
