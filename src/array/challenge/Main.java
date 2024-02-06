@@ -17,8 +17,9 @@ public class Main {
 		Arrays.sort(numberGen);
 		System.out.println(Arrays.toString(numberGen));
 		
-		int[] sortedArray = sortInteger(new int[] {7, 10, 85});
-		System.out.println(Arrays.toString(sortedArray));
+		
+		//int[] sortedArray = sortInteger(new int[] {7, 10, 85});
+		//System.out.println(Arrays.toString(sortedArray));
 		
 	}
 	
