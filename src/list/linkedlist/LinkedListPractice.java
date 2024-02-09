@@ -20,8 +20,11 @@ public class LinkedListPractice {
 		//removeElements(placesToVisit);
 		//System.out.println(placesToVisit);
 		
-		gettingElements(placesToVisit);
-		printItinerary3(placesToVisit);
+		//gettingElements(placesToVisit);
+		//printItinerary(placesToVisit);
+		//printItinerary2(placesToVisit);
+		//printItinerary3(placesToVisit);
+		testIterator(placesToVisit);
 	}
 
 	
@@ -129,4 +132,23 @@ public class LinkedListPractice {
 		System.out.println("Trip ends at " +list.getLast());
 	}
 	
+	private static void testIterator(LinkedList<String> list) {
+		
+		var iterator = list.listIterator();
+		while(iterator.hasNext()) {						// loop the entire list
+//			System.out.println(iterator.next());
+			if(iterator.next().equals("Brisbane")) { 	// Condition if Brisbane is the list 
+				//iterator.remove();  					// removes the item in the list if Brisbane is in the list
+				iterator.add("Lake Wivenhoe");
+			}
+		
+		}
+		
+		while(iterator.hasPrevious()) {
+			System.out.println(iterator.previous());
+		}
+		System.out.println(list);
+		var iterator2 = list.listIterator(2);
+		System.out.println(iterator2.previous());
+	}
 }
