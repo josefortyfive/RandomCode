@@ -1,4 +1,4 @@
-package abstraction.challenge;
+package ch11.abstraction.challenge;
 
 public abstract class ProductForSale {
 

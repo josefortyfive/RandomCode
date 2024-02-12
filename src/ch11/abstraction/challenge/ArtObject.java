@@ -1,4 +1,4 @@
-package abstraction.challenge;
+package ch11.abstraction.challenge;
 
 public class ArtObject extends ProductForSale {
 

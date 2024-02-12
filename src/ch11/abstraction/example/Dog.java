@@ -1,4 +1,4 @@
-package abstraction.example;
+package ch11.abstraction.example;
 
 public class Dog extends Mammal {
 
