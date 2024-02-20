@@ -12,9 +12,28 @@ public class MainInterface {
 		//flier.move();
 		//tracked.move();
 
-		bird.takeoff();
+		//bird.takeoff();
+		//flier.fly();
+		//tracked.track();
+		//flier.land();
+		
+		inFlight(flier);
+		inFlight(new Jet());
+		Trackable truck = new Truck();
+		truck.track();
+		double kmsTraveled = 100;
+		double milesTravaled = kmsTraveled * FlightEnabled.KM_TO_MILES;
+		System.out.printf("The truck traveled %.2f km or %.2f miles %n", kmsTraveled, milesTravaled);
+	}
+	
+	private static void inFlight(FlightEnabled flier) {
+		flier.takeoff();
 		flier.fly();
-		tracked.track();
+		
+		if(flier instanceof Trackable tracked) {
+			tracked.track();
+		}
+		
 		flier.land();
 	}
 }
