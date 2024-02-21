@@ -3,7 +3,7 @@ package ch11.interfaces.example;
 public class Jet implements FlightEnabled, Trackable{
 
 	@Override
-	public void takeoff() {
+	public void takeOff() {
 		System.out.println(getClass().getSimpleName() + " is taking off.");
 	}
 
