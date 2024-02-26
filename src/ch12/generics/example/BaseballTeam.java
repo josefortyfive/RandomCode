@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class BaseballTeam {
 
 	private String teamName;
-	private List<BaseballPlayer> teamMembers = new ArrayList<>();
+	private List<Player> teamMembers = new ArrayList<>();
 	private int totalWins = 0;
 	private int totalLosses = 0;
 	private int totalTies = 0;
@@ -15,7 +15,7 @@ public class BaseballTeam {
 		this.teamName = teamName;
 	}
 
-	public void addTeamMember(BaseballPlayer  player) {
+	public void addTeamMember(Player  player) {
 		
 		// if player is not added, add team player
 		if(!teamMembers.contains(player)) {
