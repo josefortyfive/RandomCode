@@ -3,10 +3,10 @@ package ch12.generics.example;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Team {
+public class Team<T> {
 
 	private String teamName;
-	private List<Player> teamMembers = new ArrayList<>();
+	private List<T> teamMembers = new ArrayList<>();
 	private int totalWins = 0;
 	private int totalLosses = 0;
 	private int totalTies = 0;
@@ -15,11 +15,11 @@ public class Team {
 		this.teamName = teamName;
 	}
 
-	public void addTeamMember(Player  player) {
+	public void addTeamMember(T  t) {
 		
 		// if player is not added, add team player
-		if(!teamMembers.contains(player)) {
-			teamMembers.add(player);
+		if(!teamMembers.contains(t)) {
+			teamMembers.add(t);
 		}
 	}
 	
