@@ -20,6 +20,9 @@ public class InsertionSort {
     
     }
     
+    private static boolean isValid() {
+    	return true;
+    }
     public static void printArray( int arr[]){
         int n = arr.length;
         
