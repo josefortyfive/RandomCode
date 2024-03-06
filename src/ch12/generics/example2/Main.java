@@ -1,6 +1,8 @@
 package ch12.generics.example2;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class Main {
 
@@ -19,7 +21,7 @@ public class Main {
 		
 		for(String s : fruit) {
 			int val = banana.compareTo(s);
-			System.out.printf("%s %s %s: comparTo=%d%n", banana, 
+			System.out.printf("%s %s %s: compareTo=%d%n", banana, 
 					(val == 0 ? "==" : (val < 0) ? "<" : ">"), s, val);
 		}
 		Arrays.sort(fruit);
@@ -30,33 +32,57 @@ public class Main {
 		System.out.println("P:" +(int)'P' + " " + "p:" +(int)'p');
 		
 		Student ed = new Student ("Ed");
-		Student[] students = {new Student("Tim"), new Student("Ned"),
+		Student[] students = {new Student("Tim"), new Student("Ed"),
 				new Student("Anne")};
 		Arrays.sort(students);
 		System.out.println(Arrays.toString(students));
 		
-		System.out.println("result = " +ed.compareTo("MAry"));
+		System.out.println("result = " +ed.compareTo(new Student("Ed")));
+		
+		Comparator<Student> gpaSorter = new StudentGPAComparator();
+		Arrays.sort(students, gpaSorter.reversed());
+		System.out.println(Arrays.toString(students));
 	}
 }
 
-class Student implements Comparable {
-	private String name;
+class StudentGPAComparator implements Comparator<Student> {
+	@Override
+	public int compare(Student o1, Student o2) {
+		return (o1.gpa + o1.name).compareTo(o2.gpa + o2.name);
+	}
+}
+
+class Student implements Comparable<Student> {
+	
+	private static int LAST_ID = 1000;
+	private static Random random = new Random();
+	
+	protected String name;
+	private int id;
+	protected double gpa;
 
 	public Student(String name) {
 		this.name = name;
+		id = LAST_ID++;
+		gpa = random.nextDouble(1.0, 4.0);
 	}
 
 	@Override
 	public String toString() {
-		return name;
+		return "%d - %s (%.2f".formatted(id, name, gpa);
 	}
 
+	@Override
+	public int compareTo(Student o) {
+		return Integer.valueOf(id).compareTo(Integer.valueOf(o.id));
+	}
+	
+	/**
 	@Override
 	public int compareTo(Object o) {
 		Student other = (Student) o;
 		return name.compareTo(other.name);
-	}
-	
+	}*/
 	
 	
 }
