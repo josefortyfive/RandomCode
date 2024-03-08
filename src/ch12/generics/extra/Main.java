@@ -13,11 +13,19 @@ public class Main {
 		for(int i = 0; i < studentCount; i++) {
 			students.add(new Student());
 		}
+		
+		students.add(new LPAStudents());
 		printList(students);
 		
+		List<LPAStudents> lpastudents = new ArrayList<>();
+		
+		for(int i = 0; i < studentCount; i++) {
+			lpastudents.add(new LPAStudents());
+		}
+		printList(lpastudents);
 	}
 
-	public static void printList(List<Student> students) {
+	public static void printList(List students) {
 		for(var student : students) {
 			System.out.println(student);
 		}
