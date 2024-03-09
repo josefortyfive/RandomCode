@@ -4,6 +4,18 @@ import java.util.List;
 import java.util.ArrayList;
 import ch12.generics.extra.model.*;
 
+import ch12.generics.extra.util.*;
+
+record Employee(String name) implements QueryItem{
+
+	@Override
+	public boolean matchFieldValue(String fieldName, String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+}
+
 public class Main {
 	
 	public static void main(String args[]) {
@@ -29,7 +41,17 @@ public class Main {
 		testList(new ArrayList<String>(List.of("Able", "Barry", "Charlie")));
 		testList(new ArrayList<Integer>(List.of(1, 2, 3)));
 		
+		var queryList = new QueryList<>(lpastudents);
+		var matches = queryList.getMatches("Course", "Python");
+		printMoreList(matches);
+		
+		var student2021 = QueryList.getMatches(students, "YearStarted", "2021");
+		printMoreList(student2021);
+		
+		//QueryList<Employee> employeeList = new QueryList<>();
+		
 	}
+	
 
 	public static  void printMoreList(List<? extends Student>  students) {
 		
@@ -43,7 +65,7 @@ public class Main {
 	public static void testList(List<?> list) {
 		for(var element: list) {
 			if(element instanceof String s) {
-				System.out.println("Stirng: "+s.toUpperCase());
+				System.out.println("String: "+s.toUpperCase());
 			} else if(element instanceof Integer i) {
 				System.out.println("Integer: " +i.floatValue());
 			}
