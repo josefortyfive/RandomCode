@@ -1,4 +1,4 @@
-package test;
+package com.linkedin.algorithm.string;
 
 public class ValidationAlgorithm {
 
