@@ -34,6 +34,10 @@ public class Customer {
 	public String getEmail() {
 		return email;
 	}
+	@Override
+	public String toString() {
+		return "Customer [name=" + name + ", creditLimit=" + creditLimit + ", email=" + email + "]";
+	}
 
 	
 	
