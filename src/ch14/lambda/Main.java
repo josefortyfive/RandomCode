@@ -36,7 +36,6 @@ public class Main {
 		
 		System.out.println(people);
 		
-		
 		interface EnhancedComparator<T> extends Comparator<T> {
 			int secondLevel(T o1, T o2);
 		}
