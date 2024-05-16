@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class Example {
 
 	record Person(String firstName, String lastName) {
 
@@ -17,10 +17,10 @@ public class Main {
 	}
 	public static void main(String args[]) {
 		List<Person> people = new ArrayList<>(Arrays.asList(
-				new Main.Person("Lucy", "Van Pelt"),
-				new Main.Person("Sally", "Brown"),
-				new Main.Person("Peppermint", "Patty"),
-				new Main.Person("Charlie", "Brown")));
+				new Example.Person("Lucy", "Van Pelt"),
+				new Example.Person("Sally", "Brown"),
+				new Example.Person("Peppermint", "Patty"),
+				new Example.Person("Charlie", "Brown")));
 		
 		//
 		var comparatorLastName = new Comparator<Person>(){
