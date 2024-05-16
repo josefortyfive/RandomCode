@@ -23,7 +23,19 @@ public class Example1 {
 			char first = myString.charAt(0);
 			System.out.println(prefix + " " +myString + " means " +first);
 		});
+
+		System.out.println("------------------------");
 		
 		//System.out.println(myString); // This is an error 
+		int result = calculator((var a, var b) -> a+ b, 5, 12);
+		var result2 = calculator((a, b) -> a / b, 10.0, 2.5);
+		var result3 = calculator((a, b) -> a.toUpperCase() + " " + b.toUpperCase(), "Ralph", "Kramden");
+	}
+	
+	
+	public static <T> T calculator(Operation<T> function, T value1, T value2) {
+		T result = function.operate(value1, value2);
+		System.out.println("Result of operation: " +result);
+		return result;
 	}
 }
