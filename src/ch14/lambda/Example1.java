@@ -3,8 +3,10 @@ package ch14.lambda;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
+import java.util.function.Supplier;
 
 public class Example1 {
 	
@@ -67,6 +69,36 @@ public class Example1 {
 		
 		list.removeIf(s -> s.startsWith("ea"));
 		list.forEach(s -> System.out.println(s));
+
+		System.out.println("---------------------------------");
+		
+		list.replaceAll(s -> s.charAt(0) +" - " +s.toUpperCase());
+
+		list.forEach(s -> System.out.println(s));
+		
+		String[] emptyString = new String[10];
+		System.out.println(Arrays.toString(emptyString));
+		Arrays.fill(emptyString, "");
+		System.out.println(Arrays.toString(emptyString));
+		
+		Arrays.setAll(emptyString, (i) -> "" +(i + 1) +".");
+		System.out.println(Arrays.toString(emptyString));
+		
+		Arrays.setAll(emptyString, (i) -> "" +(i + 1) +"." +
+				switch(i) {
+				case 0 -> "one";
+				case 1 -> "two";
+				case 2 -> "three";
+				default ->"";
+				}
+		);
+		System.out.println(Arrays.toString(emptyString));
+		
+		String[] names = {"Ann", "Bob", "Carol", "David", "Ed", "Fred" };
+		String[] randomList = randomlySelectedValues(15, names,
+				() -> new Random().nextInt(0, names.length));
+		System.out.println(Arrays.toString(randomList));
+		
 	}
 	
 	
@@ -78,5 +110,14 @@ public class Example1 {
 	
 	public static <T> void processPoint(T t1, T t2, BiConsumer<T, T> consumer) {
 		consumer.accept(t1, t2);
+	}
+	
+	public static String[] randomlySelectedValues(int count, String[] values, Supplier<Integer> s) {
+		String[] selectedValues = new String[count];
+		for(int i = 0; i <count; i++) {
+			selectedValues[i] = values[s.get()];
+			
+		}
+		return selectedValues;
 	}
 }
