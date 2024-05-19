@@ -1,4 +1,4 @@
-package dev.lpa;
+package ch14.lambda;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
