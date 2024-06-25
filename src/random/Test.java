@@ -1,10 +1,9 @@
 package random;
 
 
-import java.io.*;
-import java.util.*;
+import java.util.Stack;
 
-class Test
+public class Test
 {   
     // Pushing element on the top of the stack
     static void stack_push(Stack<Integer> stack)
