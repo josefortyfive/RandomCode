@@ -13,12 +13,12 @@ class GenericTest {
     public static void main(String[] args)
     {
         // instance of Integer type
-        StackDemo1<Integer> iObj = new StackDemo1<Integer>(15);
+    	Test<Integer> iObj = new Test<Integer>(15);
         System.out.println(iObj.getObject());
  
         // instance of String type
-        StackDemo1<String> sObj
-            = new StackDemo1<String>("GeeksForGeeks");
+        Test<String> sObj
+            = new Test<String>("GeeksForGeeks");
         System.out.println(sObj.getObject());
     }
 }
