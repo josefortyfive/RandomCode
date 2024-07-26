@@ -69,5 +69,8 @@ public class Main {
         
         boolean disjoint2 = Collections.disjoint(kings, tens);
         System.out.println("disjoint = " +disjoint2);
+        
+      
+        
     }
 }
