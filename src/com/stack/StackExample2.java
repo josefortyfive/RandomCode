@@ -11,7 +11,14 @@ public class StackExample2 {
         animals.push("Horse");
         animals.push("Cat");
         System.out.println("Stack: " + animals);
+        
+        
+        animals.push("Dolphin");
+        animals.push("Shark");
+        animals.push("Giraff");
+  
 
+        System.out.println("Stack: " + animals);
         // Access element from the top
         String element = animals.peek();
         System.out.println("Element at top: " + element);
