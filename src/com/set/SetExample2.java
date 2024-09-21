@@ -23,6 +23,10 @@ public class SetExample2 {
             System.out.print(iterate.next());
             System.out.print(", ");
         }
+        
+        System.out.println("End of the loop!");
+        
+        
 
     }
 }
