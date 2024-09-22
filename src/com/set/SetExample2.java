@@ -26,6 +26,8 @@ public class SetExample2 {
         
         System.out.println("End of the loop!");
         
+        System.out.println("This is the End of the loop!");
+        
         
 
     }
