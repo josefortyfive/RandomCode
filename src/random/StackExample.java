@@ -10,6 +10,7 @@ public class StackExample {
 		sample.push("John");
 		sample.push("Nancy");
 		sample.push("Binay");
+		sample.push("This");
 		
 		while(!sample.isEmpty()) {
 
