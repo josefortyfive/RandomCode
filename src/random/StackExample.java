@@ -11,6 +11,8 @@ public class StackExample {
 		sample.push("Nancy");
 		sample.push("Binay");
 		sample.push("This");
+		sample.push("shake!");
+		
 		
 		while(!sample.isEmpty()) {
 
