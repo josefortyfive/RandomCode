@@ -19,5 +19,18 @@ public class SetExample4 {
 
         // Printing the elements inside the Set object
         System.out.println(hs);
+        
+        
+        Set<String> ha = new HashSet<String>();
+
+        // Adding elements to above object
+        // using add() method
+        ha.add("Z");
+        ha.add("Z");
+        ha.add("X");
+        ha.add("Y");
+
+        // Printing the elements inside the Set object
+        System.out.println(ha);
 	}
 }
