@@ -10,6 +10,7 @@ public class StackExample5 {
 		stack.push("A");
 		stack.push("B");
 		stack.push("C");
+		stack.push("D");
 
 		Stream<String> stream = stack.stream();
 
